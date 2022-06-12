@@ -7,7 +7,7 @@ import SubMenu from 'antd/lib/menu/SubMenu';
 import TopGames from './components/TopGames';
 import PageHeader from './components/PageHeader';
 
-const { Header, Sider, Content } = Layout
+const { Sider, Content } = Layout
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(false)
