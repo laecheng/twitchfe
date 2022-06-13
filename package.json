@@ -39,8 +39,5 @@
     ]
   },
   "proxy": "http://34.207.60.1/",
-  "devDependencies": {
-    "eslint": "^8.17.0",
-    "eslint-plugin-react": "^7.30.0"
-  }
+  "devDependencies": {}
 }
