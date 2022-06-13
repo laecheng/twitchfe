@@ -3,7 +3,7 @@ import { searchGameByName } from '../utils'
 import { message, Button, Modal, Form, Input } from 'antd'
 import { SearchOutlined } from '@ant-design/icons';
 
-function CustomSearch() {
+function CustomSearch({ onSuccess }) {
   const [displayModal, setDisplayModal] = useState(false)
 
   const handleCancel = () => {
@@ -15,9 +15,9 @@ function CustomSearch() {
   }
 
   const onSubmit = (data) => {
-    searchGameByName(data.game_name).then((game) => {
-      // TODO: Do something with the response from the server
-      console.log(game)
+    searchGameByName(data.game_name).then((data) => {
+      setDisplayModal(false)
+      onSuccess(data)
     }).catch((err) => {
       message.error(err)
     })
@@ -25,11 +25,14 @@ function CustomSearch() {
 
   return (
     <>
-      <Button shape="round" onClick={searchOnClick} icon={<SearchOutlined />} style={{ marginLeft: '20px', marginTop: '20px' }}>
+      <Button shape="round"
+        onClick={searchOnClick}
+        icon={<SearchOutlined />}
+        style={{ marginLeft: '20px', marginTop: '20px' }}>
         Custom Search
       </Button>
       <Modal
-        title="Custom Search"
+        title="Search"
         visible={displayModal}
         onCancel={handleCancel}
         footer={null}
@@ -53,6 +56,7 @@ function CustomSearch() {
       </Modal>
     </>
   )
+
 }
 
 export default CustomSearch

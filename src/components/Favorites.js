@@ -1,32 +1,20 @@
 import React, { useState } from 'react'
 import MenuItem from './MenuItem';
-import { Menu, Button, Drawer, message } from 'antd';
+import { Menu, Button, Drawer } from 'antd';
 import { EyeOutlined, YoutubeOutlined, VideoCameraOutlined, StarFilled } from '@ant-design/icons';
-import { getFavoriteItem } from '../utils';
 
 const { SubMenu } = Menu
 
-function Favorites() {
+function Favorites({ favoriteItems }) {
   const [displayDrawer, setDisplayDrawer] = useState(false)
-  const [data, setData] = useState({
-    VIDEO: [],
-    STREAM: [],
-    CLIP: [],
-  })
-
-  const { VIDEO, STREAM, CLIP } = data
+  const { VIDEO, STREAM, CLIP } = favoriteItems;
 
   const onDrawerClose = () => {
     setDisplayDrawer(false)
   }
 
   const onFavoriteClick = () => {
-    getFavoriteItem().then((data) => {
-      setData(data)
-      setDisplayDrawer(true)
-    }).catch((err) => {
-      message.error(err.message)
-    })
+    setDisplayDrawer(true)
   }
 
   return (
@@ -48,13 +36,13 @@ function Favorites() {
           selectable={false}
         >
           <SubMenu key={'streams'} icon={<EyeOutlined />} title="Streams">
-            <MenuItem items={STREAM}/>
+            <MenuItem items={STREAM} />
           </SubMenu>
           <SubMenu key={'videos'} icon={<YoutubeOutlined />} title="Videos">
-            <MenuItem items={VIDEO}/>
+            <MenuItem items={VIDEO} />
           </SubMenu>
           <SubMenu key={'clips'} icon={<VideoCameraOutlined />} title="Clips">
-            <MenuItem items={CLIP}/>
+            <MenuItem items={CLIP} />
           </SubMenu>
         </Menu>
       </Drawer>
