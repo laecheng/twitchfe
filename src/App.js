@@ -98,7 +98,7 @@ function App() {
       }).catch((err) => {
         message.error(err.message)
       })
-  }, [getTopGames])
+  }, [])
 
   return (
     <Layout>
