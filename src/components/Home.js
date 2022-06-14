@@ -16,7 +16,7 @@ const processUrl = (url) => url
   .replace('{height}', '252')
   .replace('{width}', '480');
 
-const renderCardTitle = (item, loggedIn, favs, favOnChange) => {
+const renderCardTitle = (item, loggedIn, favs = [], favOnChange) => {
   const title = `${item.broadcaster_name} - ${item.title}`;
 
   const isFav = favs.find((fav) => fav.id === item.id);
