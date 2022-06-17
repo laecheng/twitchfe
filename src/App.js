@@ -41,7 +41,7 @@ function App() {
   }
 
   const onGameSelect = ({ key }) => {
-    if (key === "Recommendation") {
+    if (key === "recommendation") {
       getRecommendations().then((data) => {
         setResources(data);
       });
